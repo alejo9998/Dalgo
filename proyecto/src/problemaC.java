@@ -27,7 +27,13 @@ public class problemaC {
 				{
 
 				}
-				else
+				else if(limiteMenor>limSupMoMe)
+				{
+					
+					limiteSuperior=limSupMoMe;
+					limiteMenor=limInferiroMome;
+				}
+				else if(limiteMenor<=limInferiroMome || limiteSuperior>=limSupMoMe)
 				{
 					
 					
@@ -41,9 +47,11 @@ public class problemaC {
 					{
 
 						limiteSuperior=limSupMoMe;
+						
 					}
 					
 				}
+				
 			}
 			
 			resultado =(limiteSuperior+limiteMenor)/2;
