@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PuntoB {
+public class problemaB {
 
 	public int metodo (int n, int c, String a, String b  ){
 		//Bolsa A
@@ -81,6 +81,45 @@ public class PuntoB {
 						System.out.println(i + " Eligio B: " + numB);
 					}
 				}
+				
+				else if ( numA1 < 0) {
+					if (numA > numB) {
+						cc = (int) (cc * (1 + (numA*0.01)));
+						invirtioEnA = true;
+						System.out.println(i + " Eligio A: " + numA);
+					}
+					else {
+						cc = (int) (cc * (1 + (numB*0.01)));
+						invirtioEnA = false;
+						System.out.println(i + " Eligio B: " + numB);
+					}
+				}
+				
+				else if ( numA2 < 0) {
+					if (numA + numB1 > numB + numA1) {
+						cc = (int) (cc * (1 + (numA*0.01)));
+						invirtioEnA = true;
+						System.out.println(i + " Eligio A: " + numA);
+					}
+					else {
+						cc = (int) (cc * (1 + (numB*0.01)));
+						invirtioEnA = false;
+						System.out.println(i + " Eligio B: " + numB);
+					}
+				}
+				
+				else if ( numB2 < 0) {
+					if (numA + numB1 + numA2 > numB + numA1) {
+						cc = (int) (cc * (1 + (numA*0.01)));
+						invirtioEnA = true;
+						System.out.println(i + " Eligio A: " + numA);
+					}
+					else {
+						cc = (int) (cc * (1 + (numB*0.01)));
+						invirtioEnA = false;
+						System.out.println(i + " Eligio B: " + numB);
+					}
+				}
 			}
 			else if (i == n-2 && !invirtioEnA) {
 				int numA1 = Integer.parseInt(aa[i+1]);
@@ -103,7 +142,7 @@ public class PuntoB {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		PuntoB puntob = new PuntoB();
+		problemaB puntob = new problemaB();
 		//int retornado = puntob.metodo2(3, 1000, "2 10 4", "1 1 3");
 		//int retornado = puntob.metodo2(3, 1000, "-2 1 2", "1 0 3");
 		//int retornado = puntob.metodo2(4, 1000, "2 10 2 8", "1 1 1 3");

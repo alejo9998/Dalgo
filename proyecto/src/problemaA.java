@@ -73,7 +73,6 @@ public class problemaA
 	public static void main(String[] args) {
 		Scanner sc= new Scanner(System.in);
 		problemaA punto = new problemaA();
-		System.out.println("Ingrese los datos");
 
 		while(true)
 		{
