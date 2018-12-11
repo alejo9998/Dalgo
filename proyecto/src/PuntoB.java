@@ -15,68 +15,99 @@ public class PuntoB {
 		//True si invirtio en A en el tiempo K, false si no
 		boolean invirtioEnA = false;
 
-		for (int i = 0; i<n; i++) {
+		for ( int i = 0; i<n ; i++) {
 			int numA = Integer.parseInt(aa[i]);
 			int numB = Integer.parseInt(bb[i]);
 
-			if ( numA > 0 && numB < 0) {
-				cc = (int) (cc * (1 + (numA*0.01)));
-				invirtioEnA = true;
-				System.out.println(i + " Eligio A: " + numA);
+			if ( (numA <= 0 && numB <= 0) ) {
+				invirtioEnA = false;
 			}
 
-			else if ( numB > 0 && numA < 0) {
+			else if ( (numB > 0 && numB > numA) || (invirtioEnA && numB > 0)) {
 				cc = (int) (cc * (1 + (numB*0.01)));
 				invirtioEnA = false;
 				System.out.println(i + " Eligio B: " + numB);
 			}
 
-			else if ( numA > 0 && numB>0 && i != n-1 && numA > numB && !invirtioEnA) {
-
-				int sigNumA = Integer.parseInt(aa[i+1]);
-				int sigNumB = Integer.parseInt(bb[i+1]);
-				if ( sigNumA > sigNumB && Math.abs(numA - numB) < Math.abs(sigNumA - sigNumB)) {
-					cc = (int) (cc * (1 + (numB*0.01)));
-					invirtioEnA = false;
-					System.out.println(i + " Eligio B: " + numB);
+			else if ( i == n-1 && !invirtioEnA) {
+				if ( numA > numB ) {
+					cc = (int) (cc * (1 + (numA*0.01)));
+					invirtioEnA = true;
+					System.out.println(i + " Eligio A: " + numA);
 				}
 				else {
-					cc = (int) (cc * (1 + (numA*0.01)));
-					invirtioEnA = true;
-					System.out.println(i + " Eligio A: " + numA);
-				}
-
-			}
-
-			else {	
-				if (numA > numB && numA > 0 && !invirtioEnA) {
-					cc = (int) (cc * (1 + (numA*0.01)));
-					invirtioEnA = true;
-					System.out.println(i + " Eligio A: " + numA);
-				}
-
-				else if (invirtioEnA && numB > 0) {
 					cc = (int) (cc * (1 + (numB*0.01)));
 					invirtioEnA = false;
 					System.out.println(i + " Eligio B: " + numB);
 				}
-
-				else if (numB >= numA && numB > 0) {
-					cc = (int) (cc * (1 + (numB*0.01)));
-					System.out.println(i + " Eligio B: " + numB);
-				}	
 			}
-		}	
+
+			else if (i <= n-3 && !invirtioEnA) {
+				int numA1 = Integer.parseInt(aa[i+1]);
+				int numB1 = Integer.parseInt(bb[i+1]);
+				int numA2 = Integer.parseInt(aa[i+2]);
+				int numB2 = Integer.parseInt(bb[i+2]);
+				//Si numA < 0 y numB > 0 o Si numB > numA y numB > 0
+
+				if ( numA > 0 && numB > 0 && numA1 > 0 && numB1 > 0 && numA2 > 0 && numB2 > 0) {
+					if ( numA + numB1 + numA2 > numB + numA1 + numB2 ) {
+						cc = (int) (cc * (1 + (numA*0.01)));
+						invirtioEnA = true;
+						System.out.println(i + " Eligio A: " + numA);
+					}
+					else {
+						cc = (int) (cc * (1 + (numB*0.01)));
+						invirtioEnA = false;
+						System.out.println(i + " Eligio B: " + numB);
+					}
+				}
+				else if (numB < 0 ) {
+					if ( numA + numB1 + numA2 > numA1 + numB2 ||
+							numA + numB2 > numA1 + numA2) {
+						cc = (int) (cc * (1 + (numA*0.01)));
+						invirtioEnA = true;
+						System.out.println(i + " Eligio A: " + numA);
+					}
+				}
+				else if (numB1 < 0) {
+					if ( numA + numA2 > numB + numA1 + numB2) {
+						cc = (int) (cc * (1 + (numA*0.01)));
+						invirtioEnA = true;
+						System.out.println(i + " Eligio A: " + numA);
+					}
+					else {
+						cc = (int) (cc * (1 + (numB*0.01)));
+						invirtioEnA = false;
+						System.out.println(i + " Eligio B: " + numB);
+					}
+				}
+			}
+			else if (i == n-2 && !invirtioEnA) {
+				int numA1 = Integer.parseInt(aa[i+1]);
+				int numB1 = Integer.parseInt(bb[i+1]);
+
+				if ( numA + numB1 > numB + numA1 ) {
+					cc = (int) (cc * (1 + (numA*0.01)));
+					invirtioEnA = true;
+					System.out.println(i + " Eligio A: " + numA);
+				}
+				else {
+					cc = (int) (cc * (1 + (numB*0.01)));
+					invirtioEnA = false;
+					System.out.println(i + " Eligio B: " + numB);
+				}
+			}
+		}
 		return cc;
 	}
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		PuntoB puntob = new PuntoB();
-		//int retornado = puntob.metodo(3, 1000, "2 10 4", "1 1 3");
-		//int retornado = puntob.metodo(3, 1000, "-2 1 2", "1 0 3");
-		//int retornado = puntob.metodo(4, 1000, "2 10 2 8", "1 1 1 3");
-		//int retornado = puntob.metodo(4, 1000, "1 1 1 3", "2 10 2 8");
+		//int retornado = puntob.metodo2(3, 1000, "2 10 4", "1 1 3");
+		//int retornado = puntob.metodo2(3, 1000, "-2 1 2", "1 0 3");
+		//int retornado = puntob.metodo2(4, 1000, "2 10 2 8", "1 1 1 3");
+		//int retornado = puntob.metodo2(4, 1000, "1 1 1 3", "2 10 2 8");
 		//System.out.println(retornado);
 		while (true) {
 			System.out.println("Ingrese la prueba");
