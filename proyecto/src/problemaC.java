@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+//Ramón Alejandro Arias Rivera
+//201718714
+//Andrés Felipe Rojas Pinzón
+//201715859
+
 public class problemaC {
 
 
