@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//Ramón Alejandro Arias Rivera
+//201718714
+//Andrés Felipe Rojas Pinzón
+//201715859
+
 public class problemaB {
 
 	public int metodo (int n, int c, String a, String b  ){
@@ -26,19 +31,19 @@ public class problemaB {
 			else if ( (numB > 0 && numB > numA) || (invirtioEnA && numB > 0)) {
 				cc = (int) (cc * (1 + (numB*0.01)));
 				invirtioEnA = false;
-				System.out.println(i + " Eligio B: " + numB);
+				//System.out.println(i + " Eligio B: " + numB);
 			}
 
 			else if ( i == n-1 && !invirtioEnA) {
 				if ( numA > numB ) {
 					cc = (int) (cc * (1 + (numA*0.01)));
 					invirtioEnA = true;
-					System.out.println(i + " Eligio A: " + numA);
+					//System.out.println(i + " Eligio A: " + numA);
 				}
 				else {
 					cc = (int) (cc * (1 + (numB*0.01)));
 					invirtioEnA = false;
-					System.out.println(i + " Eligio B: " + numB);
+					//System.out.println(i + " Eligio B: " + numB);
 				}
 			}
 
@@ -53,12 +58,12 @@ public class problemaB {
 					if ( numA + numB1 + numA2 > numB + numA1 + numB2 ) {
 						cc = (int) (cc * (1 + (numA*0.01)));
 						invirtioEnA = true;
-						System.out.println(i + " Eligio A: " + numA);
+						//System.out.println(i + " Eligio A: " + numA);
 					}
 					else {
 						cc = (int) (cc * (1 + (numB*0.01)));
 						invirtioEnA = false;
-						System.out.println(i + " Eligio B: " + numB);
+						//System.out.println(i + " Eligio B: " + numB);
 					}
 				}
 				else if (numB < 0 ) {
@@ -66,19 +71,19 @@ public class problemaB {
 							numA + numB2 > numA1 + numA2) {
 						cc = (int) (cc * (1 + (numA*0.01)));
 						invirtioEnA = true;
-						System.out.println(i + " Eligio A: " + numA);
+						//System.out.println(i + " Eligio A: " + numA);
 					}
 				}
 				else if (numB1 < 0) {
 					if ( numA + numA2 > numB + numA1 + numB2) {
 						cc = (int) (cc * (1 + (numA*0.01)));
 						invirtioEnA = true;
-						System.out.println(i + " Eligio A: " + numA);
+						//System.out.println(i + " Eligio A: " + numA);
 					}
 					else {
 						cc = (int) (cc * (1 + (numB*0.01)));
 						invirtioEnA = false;
-						System.out.println(i + " Eligio B: " + numB);
+						//System.out.println(i + " Eligio B: " + numB);
 					}
 				}
 				
@@ -86,12 +91,12 @@ public class problemaB {
 					if (numA > numB) {
 						cc = (int) (cc * (1 + (numA*0.01)));
 						invirtioEnA = true;
-						System.out.println(i + " Eligio A: " + numA);
+						//System.out.println(i + " Eligio A: " + numA);
 					}
 					else {
 						cc = (int) (cc * (1 + (numB*0.01)));
 						invirtioEnA = false;
-						System.out.println(i + " Eligio B: " + numB);
+						//System.out.println(i + " Eligio B: " + numB);
 					}
 				}
 				
@@ -99,12 +104,12 @@ public class problemaB {
 					if (numA + numB1 > numB + numA1) {
 						cc = (int) (cc * (1 + (numA*0.01)));
 						invirtioEnA = true;
-						System.out.println(i + " Eligio A: " + numA);
+						//System.out.println(i + " Eligio A: " + numA);
 					}
 					else {
 						cc = (int) (cc * (1 + (numB*0.01)));
 						invirtioEnA = false;
-						System.out.println(i + " Eligio B: " + numB);
+						//System.out.println(i + " Eligio B: " + numB);
 					}
 				}
 				
@@ -112,12 +117,12 @@ public class problemaB {
 					if (numA + numB1 + numA2 > numB + numA1) {
 						cc = (int) (cc * (1 + (numA*0.01)));
 						invirtioEnA = true;
-						System.out.println(i + " Eligio A: " + numA);
+						//System.out.println(i + " Eligio A: " + numA);
 					}
 					else {
 						cc = (int) (cc * (1 + (numB*0.01)));
 						invirtioEnA = false;
-						System.out.println(i + " Eligio B: " + numB);
+						//System.out.println(i + " Eligio B: " + numB);
 					}
 				}
 			}
@@ -128,12 +133,12 @@ public class problemaB {
 				if ( numA + numB1 > numB + numA1 ) {
 					cc = (int) (cc * (1 + (numA*0.01)));
 					invirtioEnA = true;
-					System.out.println(i + " Eligio A: " + numA);
+					//System.out.println(i + " Eligio A: " + numA);
 				}
 				else {
 					cc = (int) (cc * (1 + (numB*0.01)));
 					invirtioEnA = false;
-					System.out.println(i + " Eligio B: " + numB);
+					//System.out.println(i + " Eligio B: " + numB);
 				}
 			}
 		}
@@ -143,13 +148,8 @@ public class problemaB {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		problemaB puntob = new problemaB();
-		//int retornado = puntob.metodo2(3, 1000, "2 10 4", "1 1 3");
-		//int retornado = puntob.metodo2(3, 1000, "-2 1 2", "1 0 3");
-		//int retornado = puntob.metodo2(4, 1000, "2 10 2 8", "1 1 1 3");
-		//int retornado = puntob.metodo2(4, 1000, "1 1 1 3", "2 10 2 8");
-		//System.out.println(retornado);
 		while (true) {
-			System.out.println("Ingrese la prueba");
+			System.out.println("");
 			String linea = sc.nextLine();
 			if ( linea.equals("0 0")) {
 				sc.close();
@@ -161,7 +161,7 @@ public class problemaB {
 				String b = sc.nextLine();
 				String[] nncc = nc.split(" ");
 				int resultado = puntob.metodo(Integer.parseInt(nncc[0]), Integer.parseInt(nncc[1]), a, b);
-				System.out.println("Resultado de la prueba: " + resultado);
+				System.out.println(resultado);
 			}
 		}
 	}
